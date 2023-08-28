@@ -1,28 +1,19 @@
 import React from 'react';
 
-function ToDo({ item, deleteAToDo, updateCompletionStatus,mode }) {
-  const { id, act, completed } = item;
-
-  const handleClick = () => {
-    deleteAToDo(id);
-  };
-
-  const handleCheckboxChange = () => {
-    updateCompletionStatus(id, !completed);
-  };
-
+function ToDo({ item, handleDeleteToDo, handleUpdateCompletionStatus}) {
+  const { act, completed } = item;
   return (
-    <div className='w-96 h-14 rounded-lg bg-gray-500 flex justify-between mt-2 align-middle'>
+    <div className='w-96 h-14 rounded-lg bg-gray-500 flex justify-between mt-2 align-center p-2'>
       <p>
         <input
           type='checkbox'
           checked={completed}
           className='mr-3'
-          onChange={handleCheckboxChange}
-        />{' '}
+          onChange={handleUpdateCompletionStatus}
+        />
         {act}
       </p>
-      <button onClick={handleClick}>Delete</button>
+      <button onClick={handleDeleteToDo} className=" w-14 h-8 bg-blue-800 text-center text-white rounded-md">Delete</button>
     </div>
   );
 }
